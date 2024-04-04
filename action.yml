@@ -1,0 +1,27 @@
+name: Upload GAR
+description: |-
+  Use GAR upload CLI to push artifacts to Google Artifact Registry
+
+inputs:
+  source:
+    description: |-
+      The source of artifact to be pushed.
+    required: true
+
+  target:
+    description: |-
+      Target of the artifact to be pushed to.
+    required: true
+
+  as:
+    description: |-
+      The name for the job.
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.source }}
+    - ${{ inputs.target }}
+    - ${{ inputs.as }}
